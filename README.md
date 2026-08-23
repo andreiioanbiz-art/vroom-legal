@@ -1,6 +1,6 @@
-# Vroom · páginas legales
+# Vroom · sitio web
 
-Privacidad y términos de la app Vroom, servidos con GitHub Pages en
+La portada de Vroom más sus páginas legales, servidas con GitHub Pages en
 **vroomdgt.com**.
 
 Responsable: Andrei Ioan. Contacto: soporte@vroomdgt.com para la app,
@@ -62,9 +62,39 @@ republica solo. La URL no cambia nunca, que es justo lo que necesita Apple.
 
 ## Estructura
 
-- `index.html`, portada con los dos enlaces y el contacto de soporte.
+- `index.html`, la portada. **Es un fichero generado: no se edita a mano.**
+  Sale de `carnetify-dgt/web-vroom/build.mjs`, que convierte el export de
+  Claude Design (`Vroom.dc.html`) en HTML estático. El export se deja tal cual
+  sale de Claude Design, sin tocar: todo lo que se le añade (el enlace real de
+  la App Store, la keyword del H1, los iconos, el enlace de soporte, los
+  breakpoints, el JSON-LD y las imágenes en WebP) vive dentro del build, así
+  que volver a exportar no borra nada. Cada añadido falla ruidosamente si no
+  encuentra su anclaje, para que un cambio de diseño no publique una página a
+  medias en silencio.
+
+  Para actualizarla: se reemplaza el export, se lanza `node build.mjs` (escribe
+  en `dist/`) y luego `node deploy.mjs`, que copia aquí todo lo generado sin
+  tocar lo que se mantiene a mano. Un cambio hecho directamente sobre este
+  fichero se pierde en el siguiente build.
+- `guia/`, la guía del examen: un índice y un artículo por pregunta
+  (/guia/cuantos-fallos-se-permiten-en-el-examen-teorico/ y compañía).
+  **También generada**: los artículos se escriben en Markdown en
+  `carnetify-dgt/web-vroom/guia/*.md` y el build los convierte, les pone la
+  cabecera y el pie de la portada y los mete en el sitemap. Para tocar un
+  artículo se edita su .md y se relanza build + deploy. Los datos oficiales que
+  citan (tasa 2.1 a 94,05 euros, plazos, resultados) se contrastaron con
+  dgt.es el 23-08-2026; cuando la DGT los cambie, se cambia el .md.
+- `app.js`, la interacción de la portada (acordeón de las FAQ, selector de plan
+  y el abanico del hero). También generado, misma vía.
+- `assets/`, las capturas y los iconos que usa la portada, en WebP y con las
+  dimensiones ya escritas en el HTML. Solo viaja lo que se referencia: el resto
+  del material vive en `carnetify-dgt/web-vroom/assets`.
+- `robots.txt` y `sitemap.xml`, también generados. Si algún día se añade una
+  página nueva al dominio, hay que meterla en la lista `paginas` del build.
 - `privacidad.html`
 - `terminos.html`
-- `estilo.css`, hoja compartida. Sin fuentes ni recursos externos a propósito:
-  son páginas que revisa Apple y que se abren desde el móvil.
+- `estilo.css`, hoja compartida por las dos páginas legales. Sin fuentes ni
+  recursos externos a propósito: son páginas que revisa Apple y que se abren
+  desde el móvil. La portada no la usa.
 - `CNAME`, el dominio propio para GitHub Pages.
+- `.nojekyll`, para que Pages sirva la carpeta tal cual y no la pase por Jekyll.
