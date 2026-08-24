@@ -44,10 +44,12 @@ Quedan en:
 
 - `https://vroomdgt.com/privacidad.html`
 - `https://vroomdgt.com/terminos.html`
+- `https://vroomdgt.com/soporte.html`
 
-La de privacidad es la que se pega en la ficha de App Store Connect. Las dos
-se enlazan desde Perfil y desde el paywall, que es donde Apple las exige con
-dos productos de pago.
+En la ficha de App Store Connect van dos: la de privacidad en su campo y la de
+soporte en el campo **URL de soporte**. Privacidad y términos se enlazan además
+desde Perfil y desde el paywall, que es donde Apple las exige con dos productos
+de pago.
 
 ## Por confirmar
 
@@ -93,8 +95,14 @@ republica solo. La URL no cambia nunca, que es justo lo que necesita Apple.
   página nueva al dominio, hay que meterla en la lista `paginas` del build.
 - `privacidad.html`
 - `terminos.html`
-- `estilo.css`, hoja compartida por las dos páginas legales. Sin fuentes ni
-  recursos externos a propósito: son páginas que revisa Apple y que se abren
+- `soporte.html`, la página de ayuda. Escrita a mano como las legales, y es la
+  que va en el campo **URL de soporte** de App Store Connect: la guideline 1.5
+  pide que ahí se vea cómo pedir ayuda, y un `mailto:` en el pie de la portada
+  se queda corto si el revisor la abre sin cliente de correo. Cuando cambie la
+  app (compras, recuperación de cuenta, recordatorios) hay que barrerla, igual
+  que las legales.
+- `estilo.css`, hoja compartida por las tres páginas escritas a mano. Sin
+  fuentes ni recursos externos a propósito: son páginas que revisa Apple y que se abren
   desde el móvil. La portada no la usa.
 - `CNAME`, el dominio propio para GitHub Pages.
 - `.nojekyll`, para que Pages sirva la carpeta tal cual y no la pase por Jekyll.

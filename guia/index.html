@@ -92,6 +92,12 @@
     .guia{padding:36px 20px 72px}
     .lista{grid-template-columns:1fr}
     .cta{padding:24px}
+    /* Las migas quedaban en 21px de alto, difíciles de acertar con el dedo.
+       No llegan a 44 porque van en línea y quedarían enormes, pero de aquí se
+       sale igual con el botón de volver, que sí los tiene. */
+    .migas{gap:6px}
+    .migas a{padding:7px 0}
+    .cuerpo h2{margin-top:36px}
   }
   .x0:hover{color:#3557f0!important}
   .x1:hover{background:#2a46ce!important;color:#ffffff!important}
@@ -99,7 +105,14 @@
   .x3:hover{background:#3b4252!important;color:#ffffff!important}
   .x4:hover{background:#eef2ff!important;color:#111827!important}
   @media (max-width:900px){footer [data-cols]{grid-template-columns:1fr 1fr!important;gap:40px!important}}
-  @media (max-width:640px){header nav{display:none!important}header>div{padding:12px 16px!important;gap:12px!important}footer [data-cols]{grid-template-columns:1fr!important;gap:32px!important}}
+  @media (max-width:640px){
+    header nav{display:none!important}
+    header>div{padding:12px 16px!important;gap:12px!important}
+    footer [data-cols]{grid-template-columns:1fr!important;gap:24px!important}
+    /* Mismo arreglo táctil que la portada: los enlaces del pie medían 22px. */
+    footer [data-cols] a{padding:11px 0!important}
+    footer [data-cols] > div:not(:first-child){gap:0!important}
+  }
 </style>
 </head>
 <body>
@@ -165,7 +178,7 @@
         <span style="font-size:14px;font-weight:800;color:#111827">Legal</span>
         <a href="https://vroomdgt.com/terminos.html" style="font-size:14px;line-height:1.55;font-weight:500;color:#6b7280" class="x0">Términos de uso</a>
         <a href="https://vroomdgt.com/privacidad.html" style="font-size:14px;line-height:1.55;font-weight:500;color:#6b7280" class="x0">Política de privacidad</a>
-        <a href="mailto:soporte@vroomdgt.com" style="font-size:14px;line-height:1.55;font-weight:500;color:#6b7280" class="x0">Soporte</a>
+        <a href="/soporte.html" style="font-size:14px;line-height:1.55;font-weight:500;color:#6b7280" class="x0">Soporte</a>
       </div>
     </div>
     <div style="max-width:1200px;margin:56px auto 0;display:flex;flex-direction:column;gap:6px">
