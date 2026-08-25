@@ -106,13 +106,18 @@
   .x4:hover{background:#eef2ff!important;color:#111827!important}
   @media (max-width:900px){header nav{gap:20px!important}footer [data-cols]{grid-template-columns:1fr 1fr!important;gap:40px!important}}
   @media (max-width:640px){
-    header nav{display:none!important}
-    header>div{padding:12px 16px!important;gap:12px!important}
+    header nav{gap:12px!important}
+    header nav a[href*="#"]{display:none!important}
+    header nav a{padding:11px 0!important}
+    header>div{padding:12px 14px!important;gap:10px!important}
+    header>div>a:first-child img{height:26px!important}
+    header>div>a:last-child{padding:11px 14px!important;font-size:15px!important}
     footer [data-cols]{grid-template-columns:1fr!important;gap:24px!important}
     /* Mismo arreglo táctil que la portada: los enlaces del pie medían 22px. */
     footer [data-cols] a{padding:11px 0!important}
     footer [data-cols] > div:not(:first-child){gap:0!important}
   }
+  @media (max-width:340px){header nav a[href="/guia/"]{display:none!important}}
 </style>
 </head>
 <body>
